@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "2.0",
+  "project": "gov-cameras-br",
+  "generatedAt": "2026-04-24T06:29:00-03:00",
+  "description": "Catálogo robusto de fontes públicas oficiais com pipeline de descoberta de endpoints de câmera",
+  "globalConfig": {
+    "timeoutMs": 20000,
+    "maxRedirects": 5,
+    "retryCount": 2,
+    "retryDelayMs": 1200,
+    "defaultHeaders": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,application/json,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "Accept-Language": "pt-BR,pt;q=0.9,en;q=0.8"
+    },
+    "contentTypePriority": [
+      "image/jpeg",
+      "image/png",
+      "application/vnd.apple.mpegurl",
+      "application/x-mpegURL",
+      "video/mp4",
+      "application/json",
+      "text/html"
+    ],
+    "candidateUrlKeywords": [
+      "camera",
+      "cameras",
+      "cam",
+      "imagem",
+      "image",
+      "snapshot",
+      "frame",
+      "jpeg",
+      "jpg",
+      "png",
+      "m3u8",
+      "stream",
+      "video",
+      "playlist",
+      "monitor",
+      "transito",
+      "trafego",
+      "rodovia"
+    ]
+  },
+  "sources": [
+    {
+      "id": "cet-sp",
+      "name": "CET São Paulo",
+      "scope": "municipal",
+      "state": "SP",
+      "city": "São Paulo",
+      "category": "transito",
+      "verified": true,
+      "official": true,
+      "domains": ["www.cetsp.com.br", "cameras.cetsp.com.br"],
+      "entrypoints": [
+        {
+          "label": "officialPage",
+          "url": "https://www.cetsp.com.br/consultas/cameras-cet.aspx",
+          "verifiedPublicPage": true
+        },
+        {
+          "label": "landingPage",
+          "url": "https://cameras.cetsp.com.br/",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "html-discovery",
+        "pipeline": "html-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://www.cetsp.com.br/consultas/cameras-cet.aspx"
+        }
+      }
+    },
+    {
+      "id": "der-sp",
+      "name": "DER-SP Câmeras Online",
+      "scope": "estadual",
+      "state": "SP",
+      "city": "Rodovias estaduais",
+      "category": "rodovia",
+      "verified": true,
+      "official": true,
+      "domains": ["www.der.sp.gov.br"],
+      "entrypoints": [
+        {
+          "label": "officialPage",
+          "url": "https://www.der.sp.gov.br/WebSite/Servicos/ServicosOnline/CamerasOnlineMapa.aspx",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "html-discovery",
+        "pipeline": "html-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://www.der.sp.gov.br/WebSite/Servicos/ServicosOnline/CamerasOnlineMapa.aspx"
+        }
+      }
+    },
+    {
+      "id": "recife-pe",
+      "name": "Recife Trânsito Ao Vivo",
+      "scope": "municipal",
+      "state": "PE",
+      "city": "Recife",
+      "category": "transito",
+      "verified": true,
+      "official": true,
+      "domains": ["www2.recife.pe.gov.br"],
+      "entrypoints": [
+        {
+          "label": "servicePage",
+          "url": "https://www2.recife.pe.gov.br/servico/transito-ao-vivo",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "service-page-discovery",
+        "pipeline": "service-page-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://www2.recife.pe.gov.br/servico/transito-ao-vivo"
+        }
+      }
+    },
+    {
+      "id": "nittrans-rj",
+      "name": "NitTrans",
+      "scope": "municipal",
+      "state": "RJ",
+      "city": "Niterói",
+      "category": "transito",
+      "verified": true,
+      "official": true,
+      "domains": ["appnittrans.niteroi.rj.gov.br"],
+      "entrypoints": [
+        {
+          "label": "appPage",
+          "url": "https://appnittrans.niteroi.rj.gov.br",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "html-plus-js-discovery",
+        "pipeline": "html-plus-js-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://appnittrans.niteroi.rj.gov.br"
+        }
+      }
+    },
+    {
+      "id": "praia-grande-sp",
+      "name": "Praia Grande Ao Vivo",
+      "scope": "municipal",
+      "state": "SP",
+      "city": "Praia Grande",
+      "category": "monitoramento",
+      "verified": true,
+      "official": true,
+      "domains": ["cameras.praiagrande.sp.gov.br"],
+      "entrypoints": [
+        {
+          "label": "cameraPage",
+          "url": "https://cameras.praiagrande.sp.gov.br/aovivo/",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "html-discovery",
+        "pipeline": "html-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://cameras.praiagrande.sp.gov.br/aovivo/"
+        }
+      }
+    },
+    {
+      "id": "santos-sp",
+      "name": "Santos ao Vivo",
+      "scope": "municipal",
+      "state": "SP",
+      "city": "Santos",
+      "category": "monitoramento",
+      "verified": true,
+      "official": true,
+      "domains": ["www.santos.sp.gov.br", "egov.santos.sp.gov.br"],
+      "entrypoints": [
+        {
+          "label": "portalPage",
+          "url": "https://www.santos.sp.gov.br/santosaovivo",
+          "verifiedPublicPage": true
+        },
+        {
+          "label": "mapPage",
+          "url": "https://egov.santos.sp.gov.br/santosmapeada/Gestao/Cameras/MapaCamera/",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "map-discovery",
+        "pipeline": "map-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://www.santos.sp.gov.br/santosaovivo"
+        }
+      }
+    },
+    {
+      "id": "fortaleza-ce",
+      "name": "Fortaleza em Mapas - Câmeras de Monitoramento",
+      "scope": "municipal",
+      "state": "CE",
+      "city": "Fortaleza",
+      "category": "monitoramento",
+      "verified": true,
+      "official": true,
+      "domains": ["mapas.fortaleza.ce.gov.br"],
+      "entrypoints": [
+        {
+          "label": "mapPage",
+          "url": "https://mapas.fortaleza.ce.gov.br/mapa/531/cameras-de-monitoramento",
+          "verifiedPublicPage": true
+        }
+      ],
+      "captureProfile": {
+        "mode": "map-discovery",
+        "pipeline": "map-discovery-v1",
+        "fallback": {
+          "type": "open-page",
+          "url": "https://mapas.fortaleza.ce.gov.br/mapa/531/cameras-de-monitoramento"
+        }
+      }
+    }
+  ]
+}
